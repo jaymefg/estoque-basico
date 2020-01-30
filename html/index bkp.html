@@ -1,0 +1,65 @@
+<?php  ?>
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="css\reset.css">
+	<link rel="stylesheet" type="text/css" href="css\index.css">
+	<link rel="icon" href="images\estoque.png">
+	<title>Sistema de Estoque e Vendas</title>
+</head>
+<body>
+	<header>
+		
+	</header>
+	<main>
+		<div id="container-flex" class="tamanhos">
+			<nav id="container-botoes">
+				<form>
+					<button id="consulta-precos" class="botoes">Consulta de Preços</button>
+					<button id="produtos" class="botoes" formaction="produtos.php">Produtos</button>
+					<button id="movimentacoes" class="botoes">Movimentações</button>
+					<button id="relatorios" class="botoes">Relatórios</button>
+					<button id="perfis-sistema" class="botoes">Perfis do sistema</button>
+					<button id="sair-sistema" class="botoes">Sair do sistema</button>
+				</form>
+			</nav>
+
+			<div id="container-lista">
+				<table id="lista-produtos">
+					<thead>
+						<tr>
+							<th>Código</th>
+							<th>Produto</th>
+							<th>Preço</th>
+							<th>Quantidade</th>
+						</tr>
+					</thead>
+					<tbody id="corpo-tabela">
+						
+						<?php foreach($codigos as $codigo): ?>
+						<tr>
+							<td><?php echo $codigo['codigo']; ?></td>
+							<td><?php echo $produtos[$codigo['produto_id'] - 1]['descricao']; ?></td>
+							<td>R$ <?php echo $produtos[$codigo['produto_id'] - 1]['precoVenda']; ?></td>
+							<td><?php echo $produtos[$codigo['produto_id'] - 1]['quantidade'] ?></td>
+						</tr>
+						<?php endforeach ?>
+
+					</tbody>
+				</table>
+				<div id="preco-total"><span>R$ <?php echo number_format($soma, 2, ",", "."); ?></span></div>
+			</div>
+		</div>
+		<form id="container-input" class="tamanhos">
+			<input id="item-venda" type="text" name="itemVenda">
+			<button id="adicionar-item" class="botoes entra-item" formaction="action-adicionar-item.php" formmethod="POST">+</button>
+			<button id="fechar-venda" class="botoes fecha-venda" formaction="#" formmethod="POST">Fechar compra</button>
+		</form>
+		
+	</main>
+	<footer>
+
+	</footer>
+	<script type="text/javascript" src="js\index.js"></script>
+</body>
+</html>

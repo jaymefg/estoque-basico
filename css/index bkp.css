@@ -1,0 +1,138 @@
+.tamanhos{
+	max-width: 1000px;
+}
+
+main{
+	position: relative;
+	margin: 2%;
+	font-size: 1.5rem;
+	font-family: "Georgia";
+	display: flex;
+	flex-direction: column;
+}	
+
+table{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	width: 100%;
+	background-color: white;
+
+}
+
+table thead{
+	text-align: left;
+	font-weight: bold;
+}
+
+th{
+	height: 2em;
+	vertical-align: middle;
+}
+
+td, th{
+	border-bottom: 2px solid lightgray;
+	border-left: 2px solid lightgray;
+}
+
+th:nth-child(1), 
+td:nth-child(1){
+	border-left: none;
+}
+
+#preco-total{
+	width: 160px;
+	height: 80px;
+	background-color: white;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	text-align: center;
+	vertical-align: middle;
+	background: darkgreen;
+}
+
+span{
+	line-height: 80px;
+	vertical-align: middle;
+	color: white;
+	font-weight: bold;
+}
+
+#container-flex{
+	display: flex;
+	justify-content: space-between;
+}
+
+#container-botoes{
+	display: flex;
+	flex-direction: column;
+	margin: 0;
+	box-sizing: border-box;
+	width: 34%;
+}
+
+#container-lista{
+	display: flex;
+	margin: 0;
+	padding: 0;
+	background-color: white;
+	box-sizing: border-box;
+	width: 64%;
+	box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, .6);
+	position: relative;
+	border: 1em solid lightblue;
+	font-size: 0.8em;
+}
+
+#container-input{
+	display: flex;
+	justify-content: space-between;
+	margin-top: 2%;
+	box-sizing: border-box;
+	padding:0em;
+}
+
+.botoes{
+	padding: 1em;
+	background-color: blue;
+	box-sizing: border-box;
+	color: white;
+	font-size: 1.5rem;
+	font-family: "Georgia";
+	border: none;
+	margin-bottom: 3px;
+	box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, .6);
+}
+
+.botoes:hover{
+	background-color: #555555;
+}
+
+#item-venda{
+	height: 1.5em;
+	width: 70%;
+	padding: 1em;
+	background-color: lightblue;
+	font-size: 1.5rem;
+	font-family: "Georgia";
+	box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, .6);
+	border: none;
+}
+.entra-item{
+	width: 8%;
+	box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, .6);
+	font-size: 3.0rem;
+	font-weight: bold;
+	padding: 0;
+}
+
+.fecha-venda{
+	width: 16%;
+	background: darkgreen;
+	box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, .6);
+	font-size: 1.5rem;
+	font-weight: bold;
+	padding: 0;
+}
+

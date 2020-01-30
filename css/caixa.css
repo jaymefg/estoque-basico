@@ -1,0 +1,30 @@
+#span-total{
+    font-weight: bold;
+    color: whitesmoke;
+    text-align: justify;
+    box-sizing: border-box;
+    vertical-align: middle;
+}
+#par-total{
+    box-sizing: border-box;
+    padding: 0em;
+    margin: 0em;
+    background-color: red;
+    font-size: 1rem;
+    flex: .45;
+    text-align: center;
+}
+
+#btn-fech-compr{
+    flex: .45;
+}
+
+#codigo-produto{
+    flex: 2.5;
+}
+
+#btn-add-cod{
+    flex: .25;
+}
+
+
