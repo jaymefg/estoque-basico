@@ -20,7 +20,7 @@
     <form id="form-excluir" action="actions/action-excluir-produto.php" method="post">
         <div style=" text-align: center; width:20%; vertical-align: middle; margin: 2% auto">
             <input name="p_id" type="hidden" value="<?= $p->id ?>">
-            <p>Deseja Excluir:</p>
+            <p>Tipo de Exclusão:</p>
             <span><input name="valor" type="radio" value="p" onclick="mostrarLista()" checked> Somente este item</span><br>
             <span><input name="valor" type="radio"  value="d" onclick="mostrarLista()"> Todos iguais a este</span>
             <button class="elemento-add" type="submit" style="width: 100%">Excluir</button> 

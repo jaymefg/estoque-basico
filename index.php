@@ -5,6 +5,5 @@ error_reporting(E_ALL);
 header('Content-Type: text/html; charset=utf-8');
 
 require_once "autoload.php";
-?>
-<?php require_once "html/cabecalho.html"; ?>
-<?php require_once "html/rodape.html"; ?>
+
+header('Location:login.php');

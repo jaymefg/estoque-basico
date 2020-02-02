@@ -1,3 +1,16 @@
+#container-geral{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+}
+
+#container-tabela{
+    flex:19;
+    overflow: auto;
+    margin-top: .3rem;
+}
+
 #span-total{
     font-weight: bold;
     color: whitesmoke;
@@ -13,6 +26,12 @@
     font-size: 1rem;
     flex: .45;
     text-align: center;
+    padding-top: .2rem;
+}
+
+#form-bar-caixa{
+    display: flex;
+    flex: 1;
 }
 
 #btn-fech-compr{
@@ -26,5 +45,3 @@
 #btn-add-cod{
     flex: .25;
 }
-
-

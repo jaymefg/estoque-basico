@@ -8,15 +8,21 @@ require_once "autoload.php";
 use classes\Produto;
 
 $produtos = Produto::listar();
+// echo "<pre>";
+// var_dump($produtos);
 
 ?>
 
 <?php require_once "html/cabecalho.html"; ?>
 
-<main>
-    <input type="text" class="elemento-add" style="margin: .5%; width: 60%">
+<div id="container-geral">
+
+    <input id="input-busca" type="text" class="elemento-add" placeholder="Buscar">
+        
     <div id="container-tabela">
+
         <table class="tabela-padrao">
+
             <thead>
                 <tr>
                     <th>Código</th>
@@ -29,7 +35,7 @@ $produtos = Produto::listar();
                     <th>Excluir</th>
                 </tr>
             </thead>
-            <div id="corpo-tabela">
+
             <tbody> 
                 <?php foreach($produtos as $produto): ?>
                     <?php $d_id = $produto['descricao_id']; ?>
@@ -43,19 +49,23 @@ $produtos = Produto::listar();
                         <td><?php echo $produto['quantidade'] ?></td>
                         <td><?php echo $produto['categoria']; ?></td>
                         <td><a href="add-produtos.php?desc_id=<?= $d_id; ?>&cat_id=<?= $c_id; ?>&preco=<?= $pr_vd; ?>">+</a></td>
-                        <td><a href="editar-produtos.php?desc_id=<?= $d_id; ?>&cat_id=<?= $c_id; ?>&preco=<?= $pr_vd; ?>">Editar</a></td>
+                        <td><a href="editar-produtos.php?p_id=<?= $p_id; ?>&desc_id=<?= $d_id; ?>&cat_id=<?= $c_id; ?>&preco=<?= $pr_vd; ?>">Editar</a></td>
                         <td><a href="excluir-produto.php?p_id=<?= $p_id; ?>&d_id=<?= $d_id; ?>&preco=<?= $pr_vd; ?>">Excluir</a></td>
                     </tr>
                 <?php endforeach ?>
             </tbody>
-            </div>
+
         </table>
+
     </div>
-    <form action="adicionar-produtos.php">
+
+    <form id="form-add-produto" action="adicionar-produtos.php">
         <button>Adicionar Novos Produtos</button>
     </form>
-</main>
 
-<script src="js\produtos.js"></script>
+    <link rel="stylesheet" href="css/produto.css">
+    <script src="js\produtos.js"></script>
+
+</div>
 
 <?php require_once "html/rodape.html"; ?>

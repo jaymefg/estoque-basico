@@ -9,11 +9,12 @@ require_once 'autoload.php';
 use classes\Categoria;
 use classes\Descricao;
 use classes\Produto;
+use classes\Usuario;
 
-$lista = Produto::listarPorCodigo(123654);
+$usuario = new Usuario(2);
+$usuario->excluir();
 
+$lista = Usuario::listar();
 echo '<pre>';
 var_dump($lista);
 echo '<pre>';
-
-header('Location:../produtos.php');

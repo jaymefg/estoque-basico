@@ -1,6 +1,5 @@
-<?php
+<?php require_once __DIR__ . '/../autoload.php';
 
-require_once "autoload.php";
 use classes\Conexao;
 use classes\Descricao;
 use classes\Categoria;
@@ -11,6 +10,7 @@ $produto->precoCompra = $_POST['precoCompra'];
 $produto->precoVenda = $_POST['precoVenda'];
 $produto->categoria_id = $_POST['categoria'];
 $produto->dataCompra = $_POST['dataCompra'];
+$produto->e_disponivel = true;
 $quantidade = count($_POST['codigosProdutos']);
 
 $categoria = new Categoria($_POST['categoria']);

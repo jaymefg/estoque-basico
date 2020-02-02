@@ -1,3 +1,7 @@
+#container-principal{
+	height: 500px;
+}
+
 h1, h2{
 	text-align: left;
 	margin: .5%;
@@ -45,13 +49,6 @@ th{
 	box-sizing: border-box;
 }
 
-#container-tabela{
-	width: 60%;
-	margin: .5%;
-	height: 450px;
-	overflow: auto;
-}
-
 #container-tabela-pequena{
 	width: 60%;
 	margin: .5%;
@@ -79,3 +76,4 @@ table{
 .invisivel{
 	display: none;
 }
+

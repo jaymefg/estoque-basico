@@ -4,7 +4,7 @@ ini_set('display_errors', 1);
 error_reporting(E_ALL);
 header('Content-Type: text/html; charset=utf-8');
 
-require_once 'autoload.php';
+require_once __DIR__ . '/../autoload.php';
 
 use classes\Produto;
 try {
@@ -20,6 +20,7 @@ try {
     
     <tr>
         <?php foreach($produto as $p): ?>
+        <td class="id-produto" hidden><?= $p['id'] ?></td>
         <td><?= $p['codigo'] ?></td>
         <td><?= $p['descricao'] ?></td>
         <td class="preco-venda"><?= $p['precoVenda'] ?></td>

@@ -3,7 +3,7 @@ function carregarDadosInputProdutos(idDescricao, idCategoria, descricao, preco)
 	if (!(idDescricao === null)) {
         var inputDescricao = document.getElementById("descricao");
         var inputCategoria = document.getElementById("categoria");
-		var formAdicionarProdutos = document.getElementById('form-adicionar');
+		var formAdicionarProdutos = document.getElementById('form-add-produto');
 		var precoVenda = document.getElementById("precoVenda");
 		var inputHidden = document.createElement('input');
 		
@@ -29,18 +29,22 @@ function adicionarCodigo()
 	var tbody = document.getElementById("lista-codigos");
 
 	var input = document.createElement('input');
-	var td = document.createElement('td');
+	var tdValor = document.createElement('td');
+	var tdExcluir = document.createElement('td');
 	var tr = document.createElement('tr');
 	var a = document.createElement('a');
 
-	td.innerHTML = codigo.value + "\t| <a href=''>Excluir</a>";
+	tdValor.innerHTML = codigo.value;
+	tdExcluir.innerHTML = "<a href=''>Excluir</a>";
+
 	input.value = codigo.value;
 	codigo.value = "";
 
 	input.name = "codigosProdutos[]";
 	input.type = "hidden";
 
-	tr.appendChild(td);
+	tr.appendChild(tdValor);
+	tr.appendChild(tdExcluir);
 	tbody.appendChild(tr);
 	div.appendChild(input);
 }

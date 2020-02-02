@@ -1,0 +1,29 @@
+
+ #form-login{
+    width: 25ch;
+    height: 9rem;
+    background-color: lightskyblue;
+    vertical-align: middle;
+    box-sizing: border-box;
+    position: relative;
+    margin: auto;
+    top: calc(50% - 9rem);
+}
+
+.form-login-elementos{
+    margin: auto;
+    margin-top: 1.2rem;
+    width: 90%;
+    margin-left: calc(50% - 45%);
+    box-sizing: border-box;
+}
+
+#btn-submit{
+    width: 10ch;
+    margin-left: calc(50% - 5ch);
+}
+
+#bem-vindo{
+    text-align: center;
+    padding-top: 2rem;
+}

@@ -1,19 +1,18 @@
 <?php require_once 'autoload.php';
-
 use classes\Categoria;
 
 $categoria = new Categoria($_GET['id']);
-
 ?>
 
 <?php require_once "html/cabecalho.html"; ?>
 
-<form action="actions/action-editar-categorias.php" method="post" style="flex-direction: column">
-    <input id="nome-categoria" class="elemento-add" name="nome-categoria" type="text" placeholder='Nome' required value="<?= $categoria->nome ?>">
-    <input name="id-categoria" type="hidden" value="<?= $categoria->id ?>">
-    <div style="display: flex;">
-        <button class="elemento-add" type="submit">Salvar Categoria</button>
-    </div>
-</form>
+    <form id="form-categoria" action="actions/action-editar-categorias.php" method="post">
+        <p id="par-categoria">Editar Categoria:</p>
+        <input name="id-categoria" type="hidden" value="<?= $categoria->id ?>">
+        <input id="nome-categoria" class="form-categoria-elementos" name="nome-categoria" type="text" placeholder='Nome' value="<?= $categoria->nome ?>" required>
+        <button id="btn-submit" class="form-categoria-elementos" type="submit">Salvar</button>
+    </form>
+
+    <link rel="stylesheet" href="css/add-edt-categoria.css">
 
 <?php require_once "html/rodape.html"; ?>

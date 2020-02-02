@@ -1,0 +1,29 @@
+#container-geral{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+}
+
+#input-busca{
+    flex: .6;
+    margin-top: .3rem;
+    margin-bottom: .3rem;
+}
+
+#container-tabela{
+	width: 100%;
+	height: 100%;
+    overflow: auto;
+    flex: 19;
+}
+
+#form-add-produto{
+    margin-top: .3rem;
+    flex: 1;
+}
+
+#form-add-produto button{
+    height: 1.5rem;
+}

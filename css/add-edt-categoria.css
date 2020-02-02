@@ -1,0 +1,29 @@
+#form-categoria{
+    width: 25ch;
+    height: 9rem;
+    vertical-align: middle;
+    box-sizing: border-box;
+    position: relative;
+    margin: auto;
+    top: calc(50% - 9rem);
+    border: 1px inset rgb(135, 206, 250);
+}
+
+.form-categoria-elementos{
+    margin: auto;
+    margin-top: 1.2rem;
+    width: 90%;
+    margin-left: calc(50% - 45%);
+    box-sizing: border-box;
+}
+
+#btn-submit{
+    width: 10ch;
+    margin-left: calc(50% - 5ch);
+}
+
+#par-categoria{
+    text-align: center;
+    padding-top: .3rem;
+    font-weight: bold;
+}

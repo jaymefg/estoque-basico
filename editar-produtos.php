@@ -2,35 +2,83 @@
     use classes\Conexao;
     use classes\Descricao;
     use classes\Categoria;
-    
-    $categorias = Conexao::listar('categorias');
-    if(count($_GET) > 0){
-        $descr = new Descricao($_GET['desc_id']);
-        $cat = new Categoria($_GET['cat_id']);
-    }
+    use classes\Produto;
+
+    $selected = "";
+    $produto = new Produto($_GET['p_id']);
+    $codigo = $produto->codigo;
+    $descricao = new Descricao($produto->descricao_id);
+    $categoria = new Categoria($produto->categoria_id);
+    $categorias = Categoria::listar();
+    $produtos = Produto::listarPorDescricao($produto->descricao_id);
 ?>
 
 <?php require_once "html/cabecalho.html"; ?>
-    <form id="form-adicionar" action="actions/action-editar-produtos.php" method="post" style="flex-direction: column">
-        <div id="container-codigos"></div>
-        <input id="descricao" class="elemento-add" name="descricao" type="text" placeholder='Descrição' required>
-        <input name="descricao_id" type="hidden" value="<?= $_GET['desc_id'] ?>">
-        <input name="cat_id_anterior" type="hidden" value="<?= $_GET['cat_id'] ?>">
-        <input id="precoVenda" class="elemento-add" name="precoVenda" type="number" step="0.01" placeholder='Preço de Venda' required>
-        <select id="categoria" class="elemento-add" name="categoria_id">
-            <?php foreach($categorias as $categoria): ?>
-            <option value="<?php echo $categoria['id'] ?>"><?php echo $categoria['nome'] ?></option>
-            <?php endforeach ?>
-        </select>
-        <div style="display: flex;">
-            <button class="elemento-add" type="submit">Salvar Edição</button>
-        </div>
-    </form>
 
-    <script src="js\adicionar-produto.js"></script>
-    <script>
-        carregarDadosInputProdutos(<?= $descr->id ?>, <?= $cat->id ?>, "<?= $descr->descricao ?>", <?= $_GET['preco'] ?>);
-        document.getElementById("descricao").disabled = false;
-    </script>
+<div id="container-geral">
+    
+    <div id="div-input-edt">
+    
+        <form id="form-edt-produto" action="actions/action-editar-produtos.php" method="post">
+            
+            <input class="elemento-form" type="text" name="codigo" value="<?= $produto->codigo ?>">
+            <input class="elemento-form" name="descricao" type="text" value="<?= $descricao->descricao ?>" required>
+            <input name="p_id" type="hidden" value="<?= $produto->id ?>">
+            <input name="descricao_id" type="hidden" value="<?= $produto->descricao_id ?>">
+            <input name="cat_id_anterior" type="hidden" value="<?= $produto->categoria_id ?>">
+            <input class="elemento-form" name="precoCompra" type="number" step="0.01" value="<?= $produto->precoCompra ?>" required>
+            <input class="elemento-form" name="precoVenda" type="number" step="0.01" value="<?= $produto->precoVenda ?>" required>
+            <input type="date" name="dataCompra" class="elemento-form" value="<?= $produto->dataCompra ?>">
+
+            <div id=container-tipo-edicao>
+                <p>Tipo de Edição:</p>
+                <span><input name="valor" type="radio" value="i" checked> Somente este item</span><br>
+                <span><input name="valor" type="radio"  value="m"> Todos iguais a este</span>
+            </div>    
+            
+            <div class="elemento-form">
+                <select id="categoria" name="categoria_id">
+                    <?php foreach($categorias as $categoria): ?>
+                        <?php 
+                            if($produto->categoria_id == $categoria['id']){
+                                $selected = "selected";
+                            }else {
+                                $selected = "";
+                            }
+                        ?>    
+                        <option value="<?= $categoria['id'] ?>" <?= $selected ?>><?php echo $categoria['nome'] ?></option>
+                    <?php endforeach; ?>
+                </select>
+
+                <button id="btn-submit" type="submit">Salvar Edição</button>
+            </div>
+
+        </form>
+
+    </div>
+
+    <div id="container-tabela-pequena">
+        <table>
+            <thead>
+                <tr>
+                    <th colspan='3'>Itens que serão editados</th>
+                </tr>
+            </thead>
+            <tbody id="lista-codigos">
+                <?php foreach($produtos as $produto): ?>
+                    <tr class="lista">
+                        <td><?= $produto['codigo'] ?></td>
+                        <td><?= $produto['descricao'] ?></td>
+                        <td><?= $produto['categoria'] ?></td>
+                    </tr>
+                <?php endforeach ?>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="css/editar-produto.css">
+<script src="js/editar-produto.js"></script>
 
 <?php require_once "html/rodape.html"; ?>

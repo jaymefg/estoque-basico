@@ -4,11 +4,12 @@
 
 <?php require_once "html/cabecalho.html"; ?>
 
-<form action="actions/action-adicionar-categorias.php" method="post" style="flex-direction: column">
-    <input id="nome-categoria" class="elemento-add" name="nome-categoria" type="text" placeholder='Nome' required>
-    <div style="display: flex;">
-        <button class="elemento-add" type="submit">Salvar Categoria</button>
-    </div>
-</form>
+    <form id="form-categoria" action="actions/action-adicionar-categorias.php" method="post">
+        <p id="par-categoria">Adicionar Categoria:</p>
+        <input id="nome-categoria" class="form-categoria-elementos" name="nome-categoria" type="text" placeholder='Nome' required>
+        <button id="btn-submit" class="form-categoria-elementos" type="submit">Salvar</button>
+    </form>
+
+    <link rel="stylesheet" href="css/add-edt-categoria.css">
 
 <?php require_once "html/rodape.html"; ?>

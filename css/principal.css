@@ -1,0 +1,75 @@
+#container-principal{
+    border: 1px inset lightskyblue;
+    height: 550px;
+    width: 60%;
+    margin: 2rem auto;
+    box-sizing: border-box;
+}
+
+button{
+    background-color: rgb(2, 78, 122);
+    color: white;
+    font-weight: bold;
+}
+
+#container-botoes{
+    display: flex;
+    flex-direction: row;
+    height: 5%;
+    box-sizing: border-box;
+}
+
+.botoes{
+    /* margin-bottom: .3rem; */
+    flex: 1;
+}
+
+#bem-vindo{
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin: .3rem;
+    height: 5%;
+}
+
+#container-corpo{
+    width: 100%;
+    height: 90%;
+    box-sizing: border-box;
+}
+
+table{
+    width: 100%;
+}
+
+td, th {
+	padding: .5em;
+    margin: 0;
+    border-bottom: 1px inset rgba(135, 206, 250, .3);
+	text-align: center;
+    font-size: .9rem;
+}
+
+tr{
+	line-height: normal;
+}
+
+th{
+	font-weight: bold;
+    background-color: rgb(220, 239, 253);
+}
+
+.ativa-flex{
+	display: flex;
+}
+
+.flex1{
+	flex: 1;
+}
+
+.invisivel{
+	display: none;
+}
+
+a{
+    text-decoration: none;
+}

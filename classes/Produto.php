@@ -14,6 +14,7 @@ class Produto{
 	private $quantidade;
 	private $descricao_id;
 	private $categoria_id;
+	private $e_disponivel;
 
 	public function __construct(int $id = null)
 	{
@@ -38,7 +39,7 @@ class Produto{
 	private function carregar()
 	{
 		$conexao = Conexao::conectarBd();
-        $query = "SELECT codigo, marca, precoCompra, precoVenda, dataCompra, dataVenda, descricao_id, categoria_id FROM produtos WHERE id = :id";
+        $query = "SELECT codigo, marca, precoCompra, precoVenda, dataCompra, dataVenda, descricao_id, categoria_id, e_disponivel FROM produtos WHERE id = :id";
         $stmt = $conexao->prepare($query);
         $stmt->bindValue(":id", $this->id);
         $stmt->execute();
@@ -53,11 +54,12 @@ class Produto{
 		$this->dataVenda = $produto['dataVenda'];
 		$this->descricao_id = $produto['descricao_id'];
 		$this->categoria_id = $produto['categoria_id'];
+		$this->e_disponivel = $produto['e_disponivel'];
 	}
 
 	public static function listar()
 	{
-		$query = 'SELECT p.id, p.codigo, p.marca, p.descricao_id, p.precoVenda, p.precoCompra, p.dataCompra, p.dataVenda, ';
+		$query = 'SELECT p.id, p.codigo, p.marca, p.descricao_id, p.precoVenda, p.precoCompra, p.dataCompra, p.dataVenda, p.e_disponivel, ';
 		$query .= 'd.quantidade AS quantidade, p.categoria_id, c.nome AS categoria , d.descricao AS descricao FROM produtos p ';
 		$query .= 'INNER JOIN categorias c ON p.categoria_id = c.id ';
 		$query .= 'INNER JOIN descricoes d ON p.descricao_id = d.id';
@@ -69,7 +71,7 @@ class Produto{
 
 	public static function listarPorCategoria($categoria_id)
 	{
-		$query = "SELECT p.id, p.codigo, p.marca, p.precoCompra, p.precoVenda, p.dataCompra, p.dataVenda, p.descricao_id, p.categoria_id, ";
+		$query = "SELECT p.id, p.codigo, p.marca, p.precoCompra, p.precoVenda, p.dataCompra, p.dataVenda, p.descricao_id, p.categoria_id, p.e_disponivel, ";
 		$query .= "c.nome AS categoria, d.descricao FROM produtos p ";
 		$query .= "INNER JOIN descricoes d ON descricao_id = d.id ";
 		$query .= "INNER JOIN categorias c ON categoria_id = c.id ";
@@ -83,7 +85,7 @@ class Produto{
 
 	public static function listarPorDescricao($descricao_id)
 	{
-		$query = "SELECT p.id, p.codigo, p.marca, p.precoCompra, p.precoVenda, p.dataCompra, p.dataVenda, p.descricao_id, p.categoria_id, ";
+		$query = "SELECT p.id, p.codigo, p.marca, p.precoCompra, p.precoVenda, p.dataCompra, p.dataVenda, p.descricao_id, p.categoria_id, p.e_disponivel, ";
 		$query .= "c.nome AS categoria, d.descricao FROM produtos p ";
 		$query .= "INNER JOIN descricoes d ON descricao_id = d.id ";
 		$query .= "INNER JOIN categorias c ON categoria_id = c.id ";
@@ -97,7 +99,7 @@ class Produto{
 
 	public static function listarPorCodigo($codigo)
 	{
-		$query = "SELECT p.id, p.codigo, p.marca, p.precoCompra, p.precoVenda, p.dataCompra, p.dataVenda, p.descricao_id, p.categoria_id, ";
+		$query = "SELECT p.id, p.codigo, p.marca, p.precoCompra, p.precoVenda, p.dataCompra, p.dataVenda, p.descricao_id, p.categoria_id, p.e_disponivel, ";
 		$query .= "c.nome AS categoria, d.descricao FROM produtos p ";
 		$query .= "INNER JOIN descricoes d ON descricao_id = d.id ";
 		$query .= "INNER JOIN categorias c ON categoria_id = c.id ";
@@ -113,8 +115,8 @@ class Produto{
     {
         $conexao = Conexao::conectarBd();
 		
-		$query = "INSERT INTO produtos (codigo, marca, precoCompra, precoVenda, dataCompra, dataVenda, descricao_id, categoria_id) ";
-		$query .= "VALUES (:codigo, :marca, :precoCompra, :precoVenda, :dataCompra, :dataVenda, :descricao_id, :categoria_id)";
+		$query = "INSERT INTO produtos (codigo, marca, precoCompra, precoVenda, dataCompra, dataVenda, descricao_id, categoria_id, e_disponivel) ";
+		$query .= "VALUES (:codigo, :marca, :precoCompra, :precoVenda, :dataCompra, :dataVenda, :descricao_id, :categoria_id, :e_disponivel)";
 		
 		$stmt = $conexao->prepare($query);
         $stmt->bindValue(":codigo", $this->codigo);
@@ -125,6 +127,7 @@ class Produto{
 		$stmt->bindValue(":dataVenda", $this->dataVenda);
 		$stmt->bindValue(":descricao_id", $this->descricao_id);
 		$stmt->bindValue(":categoria_id", $this->categoria_id);
+		$stmt->bindValue(":e_disponivel", $this->e_disponivel);
         $stmt->execute();
     }
 
@@ -133,8 +136,8 @@ class Produto{
         $conexao = Conexao::conectarBd();
 		
 		$query = "UPDATE produtos SET codigo = :codigo, marca = :marca, precoCompra = :precoCompra, precoVenda = :precoVenda, ";
-		$query .= "dataCompra = :dataCompra, dataVenda = :dataVenda, descricao_id = :descricao_id, categoria_id = :categoria_id ";
-		$query .= "WHERE id = :id";
+		$query .= "dataCompra = :dataCompra, dataVenda = :dataVenda, descricao_id = :descricao_id, categoria_id = :categoria_id, ";
+		$query .= "e_disponivel = :e_disponivel WHERE id = :id";
 		
 		$stmt = $conexao->prepare($query);
 		$stmt->bindValue(":id", $this->id);
@@ -146,6 +149,7 @@ class Produto{
 		$stmt->bindValue(":dataVenda", $this->dataVenda);
 		$stmt->bindValue(":descricao_id", $this->descricao_id);
 		$stmt->bindValue(":categoria_id", $this->categoria_id);
+		$stmt->bindValue(":e_disponivel", $this->e_disponivel);
         $stmt->execute();
 	}
 
